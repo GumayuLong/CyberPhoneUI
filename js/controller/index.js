@@ -63,3 +63,21 @@ function renderUI(data){
     getEle("productList").innerHTML = content;
 };
 
+getEle("loaiSP").onchange = () => {
+    var type = getEle("loaiSP").value;
+    function fillterData(data){
+        var data = arrProduct.filter((element) => {
+			if (type === "all") {
+				return true;
+			}
+
+			return element.type === type;
+		});
+
+		return data;
+    };
+    var phoneType = fillterData(arrProduct);
+    // console.log(phoneType);
+    renderUI(phoneType);
+}
+
