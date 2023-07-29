@@ -44,6 +44,43 @@ header {
     }
 }
 
+.cart {
+    padding: 5px;
+    border-radius: 5px;
+    color: $color-blue-2;
+    font-size: $fs-3;
+    background-color: #fff;
+    &:hover {
+        background-color: $color-blue-3;
+    }
+    border: 0;
+    position: relative;
+
+    #qtyCart {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        z-index: 1;
+        color: white;
+        font-size: 14px;
+        padding: 0px 5px;
+        border-radius: 50%;
+        
+    }
+}
+#modelConfirmDelete .modal-dialog,
+#ConfirmDeleteAllGioHang .modal-dialog,
+#ConfirmDeleteCartItem .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+toast-header {
+    text-align: center;
+}
+
+
 //responsive
 @include responsive("large-down"){
     header{

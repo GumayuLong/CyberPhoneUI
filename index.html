@@ -20,7 +20,7 @@
         crossorigin="anonymous" />
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="./css/main.css">
-
+    
     <style>
         .loader {
         border: 16px solid #f3f3f3; /* Light grey */
@@ -60,35 +60,115 @@
     <header>
         <nav class="phoneNav container navbar navbar-expand-lg">
             <a class="navbar-brand" href="#">CyberPhone</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#phoneNavbar"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                    <i class="fa fa-bars"></i>
-                </span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="phoneNavbar">
+            <!-- <div class="collapse navbar-collapse" id="phoneNavbar"> -->
+            <div id="phoneNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="./index.html">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="./admin.html">Admin</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-
                 </ul>
             </div>
+
+            <button class="cart" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-shopping-cart"></i>
+                <span id="qtyCart" class="bg-danger">0</span>
+            </button>
         </nav>
     </header>
+    <!-- Giỏ hàng -->
+
+    <section class="gioHang">
+        <div class="modal fade gioHang" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold text-danger" id="exampleModalLabel">GIỎ HÀNG</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body pb-0" id="itemCart">
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-body d-flex justify-content-between py-0">
+                            <div>
+                                <h5 class="cardPhone__title text-primary">Tạm tính: </h5>
+                                <h5 class="cardPhone__title text-primary">Phí vận chuyển: </h5>
+                                <h5 class="cardPhone__title text-danger font-weight-bold">Tổng tiền: </h5>
+                            </div>
+                            <div class="text-right">
+                                <h5 class="cardPhone__title text-primary" id="tamTinh">0</h5>
+                                <h5 class="cardPhone__title text-primary" id="phiVanChuyen">0</h5>
+                                <h5 class="cardPhone__title text-danger font-weight-bold" id="tongTien">0</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success" id="btnClose" data-dismiss="modal">Tiếp tục
+                                mua</button>
+                            <button type="button" class="btn btn-warning" id="btnXoa" data-toggle="modal"
+                                data-target="#ConfirmDeleteAllGioHang">
+                                Xóa giỏ hàng</button>
+                            <button type="button" class="btn btn-danger" id="btnThanhToan">Thanh Toán</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model xác nhận trước khi xóa Tất cả giỏ hàng -->
+    <div class="modal fade" id="ConfirmDeleteAllGioHang" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="innerHTMLDeleteAll" class="modal-body text-center font-weight-bold h3">
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btnConfirmNo" type="button" class="btn btn-primary" data-dismiss="modal">Không</button>
+                    <button id="btnDeleteAll" type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model xác nhận trước khi xóa CartItem -->
+    <div class="modal fade" id="ConfirmDeleteCartItem" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="innerHTMLDeleteAll" class="modal-body text-center font-weight-bold h3">
+                    Bạn muốn xóa điện thoại này ra khỏi giỏ hàng ?
+                </div>
+                <div class="modal-footer">
+                    <button id="btnConfirmNo1" type="button" class="btn btn-primary" data-dismiss="modal">Không</button>
+                    <button id="btnDeleteCartItem" type="button" class="btn btn-danger"
+                        data-dismiss="modal">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thanh toán thành công -->
+    <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 10000;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);">
+        <div id="liveToast" class="toast thanhToanThanhCong hide" role="alert" aria-live="assertive" aria-atomic="true"
+            data-delay="2500">
+            <div class="toast-body" id="innerThanhToanTC" style="background-color: white;">
+
+            </div>
+        </div>
+    </div>
+
+
     <section class="phoneCarousel">
         <div class="container">
             <div class="row">
@@ -125,7 +205,7 @@
                 </div>
             <div id="loader" class="loader" style="display: none;"></div>
             <div id="productList" class="row">
-                <!-- <div class="col-12 col-md-6 col-lg-4">
+                 <!-- <div class="col-12 col-md-6 col-lg-4">
                     <div class="card cardPhone">
                         <img src="./img/product1.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -147,13 +227,15 @@
                                     <i class="fa fa-star"></i>
                                 </div>
                                 <div>
-                                    <button class="btnPhone-shadow"><i class="fa fa-shopping-cart"></i> Buy Now</button>
+                                    <button class="btnPhone-shadow" onclick="themGioHang()">
+                                <i class="fa fa-shopping-cart"></i> Buy Now </button>
                                 </div>
                             </div>
 
                         </div>
                     </div>
                 </div> -->
+                </div>
             </div>
         </div>
     </section>
@@ -199,10 +281,14 @@
         integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="./js/models/product.js"></script>
+    <!-- Store JS -->
+    <script src="./js/models/cart.js"></script>
+    
+    <script src="./models/product.js"></script>
     <script src="./js/services/api.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/controller/index.js"></script>
+    
 </body>
 
 </html>
