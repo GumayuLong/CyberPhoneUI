@@ -13,6 +13,7 @@
         "../sass/Layouts/_carousel.scss",
         "../sass/Layouts/_products.scss",
         "../sass/Layouts/_footer.scss",
+        "../sass/Layouts/_cart.scss",
         "../sass/Themes/dark/_resetDark.scss",
         "../sass/Themes/dark/_buttonDark.scss",
         "../sass/Themes/dark/_cardDark.scss",

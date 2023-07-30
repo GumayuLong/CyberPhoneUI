@@ -9,7 +9,7 @@ function Product(
 	_loaiSP
 ) {
 	this.name = _tenSP;
-	this.price = _gia;
+	this.price = _giaSP;
 	this.screen = _screen;
 	this.backCamera = _backCamera;
 	this.frontCamera = _frontCamera;
